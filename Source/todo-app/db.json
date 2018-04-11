@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Read SitePoint article",
+      "complete": false
+    },
+    {
+      "complete": false,
+      "title": "fdgfg",
+      "id": 2
+    },
+    {
+      "complete": false,
+      "title": "sdfdsfdsf",
+      "id": 3
+    },
+    {
+      "complete": false,
+      "title": "424324",
+      "id": 4
+    }
+  ]
+}
