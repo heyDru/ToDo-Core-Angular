@@ -1,10 +1,40 @@
-<header class="header">
-    <h1>Todo</h1>
-    <input  class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
-    <input type="date"  [(ngModel)]="newTodo.expirationTime">
-    <input type="time"  [(ngModel)]="newTodo.expirationTime">
+<!-- <header class="header">
+  <div class="card">
+    <div>
+  <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+  <input class="new-todo" placeholder="Description" autofocus="" [(ngModel)]="newTodo.description" (keyup.enter)="addTodo()">
 
-  </header>
+  <input type="date" [(ngModel)]="newTodo.expirationTime">
+  <input type="time" [(ngModel)]="newTodo.expirationTime">
+</div>
+</div>
+</header> -->
 
+<div class="card">
+  <div class="card-content">
+    <div class="card-title">New to do</div>
+    <form (ngSubmit)="addTodo()" class="col s6">
+      <div class="row">
+        <div class="input-field col s12 center">
+          <input type="text" placeholder="What needs to be done?" autofocus="" name="title" [(ngModel)]="newTodo.title"/>
+          <label>Title</label>
+        </div>
+        <div class="input-field col s12">
+          <input  type="text" placeholder="Description" autofocus="" name="description" [(ngModel)]="newTodo.description"/>
+          <label>Description</label>
+        </div>
+         <div>
+            <label>
+                Date Time:
+                <input [min]="minDateTime" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="newTodo.expirationTime" placeholder="Date Time">
+                <owl-date-time #dt1></owl-date-time>
+            </label>
+         </div> 
 
-  <!-- datetime="yyyy-MM-dd HH:mm:ss" -->
+        <input type="submit" value="Add" class="btn btn-flat">
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- datetime="yyyy-MM-dd HH:mm:ss" -->

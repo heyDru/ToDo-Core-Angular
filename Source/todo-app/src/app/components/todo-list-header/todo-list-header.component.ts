@@ -12,6 +12,8 @@ export class TodoListHeaderComponent{
   @Output()
   add:EventEmitter<Todo> = new EventEmitter();
 
+  minDateTime =new Date(); 
+
   constructor() { }
 
   addTodo(){

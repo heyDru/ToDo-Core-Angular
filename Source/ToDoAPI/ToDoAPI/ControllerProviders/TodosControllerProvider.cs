@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Remotion.Linq.Utilities;
 using ToDoAPI.ControllerProviders.Interfaces;
 using ToDoAPI.DAL;
+using ToDoAPI.DAL.Interfaces;
 using ToDoAPI.DomainModels;
 
 namespace ToDoAPI.ControllerProviders
 {
     public class TodosControllerProvider : ITodosControllerProvider
     {
-        private readonly TodosRepository _todoRepository;
+        private readonly ITodosRepository _todoRepository;
 
-        public TodosControllerProvider(TodosRepository todoRepository)
+        public TodosControllerProvider(ITodosRepository todoRepository)
         {
             _todoRepository = todoRepository;
         }

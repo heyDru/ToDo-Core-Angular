@@ -1,7 +1,42 @@
-<div class="view">
-  <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete" />
-  <label>{{todo.title}}</label>
-  <label >{{todo.expirationTime}}</label>
-  <button class="edit" (click)="editTodo(todo)">edit</button>
-  <button class="destroy" (click)="removeTodo(todo)">delete</button>
+<div class="card">
+  <div class="card-content">
+    <div class="row">
+
+      <input type="checkbox" id="'checkbox_'+{{todo.id}}" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+      <label for="'checkbox_'+{{todo.id}}">
+        <strong>{{todo.title}}</strong>
+      </label>
+
+    </div>
+    <!-- <label >{{todo.expirationTime}}</label> -->
+    <div>
+      <label>Description: {{todo.description}}</label>
+    </div>
+    <div>
+        expiration Time : {{todo.expirationTime}}
+    </div>
+    <div class="row">
+      <!-- <button class="btn blue" (click)="editTodo(todo)">edit</button> -->
+      <a href="#" class="">
+        <i (click)="editTodo(todo)" class="fa fa-edit" style="font-size:45px;color:blue;"></i>
+      </a>
+      <!-- <button class="btn red" (click)="removeTodo(todo)">delete</button> -->
+      <a href="#" class="">
+        <i (click)="removeTodo(todo)" class="fa fa-times-circle" style="font-size:45px;color:red;"></i>
+      </a>
+    </div>
+    <div *ngIf="editState && todoToEditId == todo.id">
+      <form (ngSubmit)="updateTodo()" class="col s6">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" placeholder="What needs to be done?" autofocus="" name="title" [(ngModel)]="todo.title" />
+          </div>
+          <div class="input-field col s6">
+            <input type="text" placeholder="Description" autofocus="" name="description" [(ngModel)]="todo.description" />
+          </div>
+          <input type="submit" value="Update" class="btn btn-flat green">
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

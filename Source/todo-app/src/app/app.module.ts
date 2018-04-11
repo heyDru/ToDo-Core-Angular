@@ -10,7 +10,8 @@ import { TodoListItemComponent } from './components/todo-list-item/todo-list-ite
 import { TodoDataService } from './services/todo-data.service';
 import { TodoApiService } from './services/todo-api.service';
 import { HttpModule } from '@angular/http';
-
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
   providers: [TodoDataService, TodoApiService],
   bootstrap: [AppComponent]

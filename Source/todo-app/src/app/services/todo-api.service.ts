@@ -43,7 +43,7 @@ export class TodoApiService {
 
   updateTodo(todo:Todo):Observable<Todo>{
     return this.http
-    .put(API_URL+'/todos'+todo.id,todo)
+    .put(API_URL+'/todos/'+todo.id,todo)
     .map(response=>{
       return new Todo(response.json());
     })
