@@ -9,6 +9,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ToDoAPI.ControllerProviders;
+using ToDoAPI.ControllerProviders.Interfaces;
+using ToDoAPI.DAL;
+using ToDoAPI.DAL.Interfaces;
 using ToDoAPI.DomainModels;
 
 namespace ToDoAPI
@@ -25,8 +29,10 @@ namespace ToDoAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<>(option =>
+            services.AddDbContext<TodoContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("TodosConnection")));
+            services.AddSingleton<ITodosRepository, TodosRepository>();
+            services.AddTransient<ITodosControllerProvider, TodosControllerProvider>();
             services.AddMvc();
         }
 
@@ -37,7 +43,6 @@ namespace ToDoAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
         }
     }

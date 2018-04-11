@@ -1,4 +1,10 @@
 <header class="header">
     <h1>Todo</h1>
     <input  class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+    <input type="date"  [(ngModel)]="newTodo.expirationTime">
+    <input type="time"  [(ngModel)]="newTodo.expirationTime">
+
   </header>
+
+
+  <!-- datetime="yyyy-MM-dd HH:mm:ss" -->
