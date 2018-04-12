@@ -14,6 +14,6 @@ namespace ToDoAPI.DomainModels
         public string Title { get; set; }
         public string Description{ get; set; }
         public bool Complete { get; set; }
-        public DateTime ExpirationTime { get; set; }
+        public Nullable<DateTime> ExpirationTime { get; set; }
     }
 }

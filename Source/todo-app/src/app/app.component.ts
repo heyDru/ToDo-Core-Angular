@@ -25,14 +25,18 @@ export class AppComponent implements OnInit {
   onAddTodo(todo) {
     this.todoService
       .addTodo(todo)
-      .subscribe(newTodo => { this.todos.push(newTodo) });
+      .subscribe(newTodo => {
+        if (newTodo !== null) {
+          this.todos.push(newTodo)
+        }
+      });
   }
 
   onRemoveTodo(todoToDelete) {
     this.todoService
       .deleteTodoById(todoToDelete.id)
-      .subscribe(deleted=>{
-       this.todos = this.todos.filter(todo=>todo.id !== todoToDelete.id) 
+      .subscribe(deleted => {
+        this.todos = this.todos.filter(todo => todo.id !== todoToDelete.id)
       });
   }
 
@@ -40,11 +44,13 @@ export class AppComponent implements OnInit {
     this.todoService
       .toggleTodoComplete(todo)
       .subscribe(updatedTodo => {
-        todo = updatedTodo;
+        if(updatedTodo!==null){
+          todo = updatedTodo;
+        }
       });
   }
 
-  onUpdate(todo:Todo){
+  onUpdate(todo: Todo) {
     this.todoService
       .updateTodoById(todo)
       .subscribe(updatedTodo => {

@@ -21,6 +21,9 @@ export class TodoDataService {
   }
 
   addTodo(todo: Todo): Observable<Todo> {
+    if(todo.expirationTime === undefined){
+      todo.expirationTime = null;
+    }
     return this.todoApi.createTodo(todo);
   }
 

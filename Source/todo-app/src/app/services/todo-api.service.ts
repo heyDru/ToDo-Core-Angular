@@ -29,6 +29,10 @@ export class TodoApiService {
     return this.http
     .post(API_URL+'/todos',todo)
     .map(response=>{
+      let todo = response.json();
+      if( response.json() == null){
+        return new Todo();
+      }
       return new Todo(response.json())
     })
     .catch(this.handleError);

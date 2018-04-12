@@ -19,41 +19,71 @@ namespace ToDoAPI.Controllers
             _todoProvider = todoProvider;
         }
 
-        //[HttpGet]
-        //public string Test()
-        //{
-        //    return "Ok";
-        //}
-
         [HttpGet]
         public IQueryable<Todo> Get()
         {
+            try
+            { 
             return _todoProvider.GetAllTodos();
+            }
+            catch (Exception e)
+            {
+                return Enumerable.Empty<Todo>().AsQueryable(); ;
+            }
         }
 
-        [HttpGet("{id}")]        public async Task<Todo> Get(int id)
+        [HttpGet("{id}")]
+        public async Task<Todo> Get(int id)
         {
-            return await _todoProvider.GetTodoById(id);
+            try
+            {
+                return await _todoProvider.GetTodoById(id);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         [HttpPost]
-        public async Task Creates([FromBody]Todo todo)
+        public async Task<Todo> Creates([FromBody]Todo todo)
         {
-         
-                await _todoProvider.AddTodo(todo);
+            try
+            {
+           return await _todoProvider.AddTodo(todo);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<Todo> Put([FromBody]Todo todo)
         {
-            await _todoProvider.UpdateTodo(todo);
-            return todo;
+            try
+            {
+                await _todoProvider.UpdateTodo(todo);
+                return todo;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await _todoProvider.DeleteTodo(id);
+            try
+            {
+                await _todoProvider.DeleteTodo(id);
+            }
+            catch (Exception e)
+            {
+              return; 
+            }
+           
         }
     }
 }

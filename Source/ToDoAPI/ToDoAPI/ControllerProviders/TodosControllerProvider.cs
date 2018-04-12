@@ -16,7 +16,14 @@ namespace ToDoAPI.ControllerProviders
 
         public TodosControllerProvider(ITodosRepository todoRepository)
         {
+            try
+            {
             _todoRepository = todoRepository;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IQueryable<Todo> GetAllTodos()
@@ -27,7 +34,7 @@ namespace ToDoAPI.ControllerProviders
             }
             catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
 
@@ -39,7 +46,7 @@ namespace ToDoAPI.ControllerProviders
             }
             catch (Exception e)
             {
-                return null;
+                throw e;
             }
         }
 
@@ -53,14 +60,14 @@ namespace ToDoAPI.ControllerProviders
                     {
                         return newTodo;
                     };
-                    return null;
+                    throw new NullReferenceException(); ;
                 }
                 catch (Exception e)
                 {
-                    return null;
+                    throw e;
                 }
             }
-            return null;
+                throw new NullReferenceException();
         }
 
         public async Task DeleteTodo(int id)
@@ -71,6 +78,7 @@ namespace ToDoAPI.ControllerProviders
             }
             catch (Exception e)
             {
+                throw e;
             }
         }
 
@@ -82,7 +90,7 @@ namespace ToDoAPI.ControllerProviders
             }
             catch (Exception e)
             {
-
+                throw e;
             }
         }
 

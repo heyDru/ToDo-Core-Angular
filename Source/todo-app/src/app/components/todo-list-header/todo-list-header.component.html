@@ -1,12 +1,14 @@
-
 <div class="card">
   <div class="card-content">
-    <div class="card-title">New to do</div>
+    <div class="card-title"><span class=" ">New to do</span></div>
     <form (ngSubmit)="addTodo()" class="col s6">
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" placeholder="What needs to be done?" autofocus="" name="title" [(ngModel)]="newTodo.title" />
+          <input type="text" placeholder="What needs to be done?" autofocus="" name="title" #title="ngModel" required [(ngModel)]="newTodo.title"/>
           <label>Title</label>
+          <div [hidden]="title.valid || title.untouched" class="red-text ">
+            Please enter the title
+          </div>
         </div>
         <div class="input-field col s12">
           <input type="text" placeholder="Description" autofocus="" name="description" [(ngModel)]="newTodo.description" />
@@ -17,7 +19,7 @@
             [(ngModel)]="newTodo.expirationTime">
           <owl-date-time #dt1></owl-date-time>
         </div>
-        <input type="submit" value="Add" class="btn btn-flat">
+        <input  [disabled]="title.invalid" type="submit" value="Add" class="btn btn-flat">
       </div>
     </form>
   </div>
