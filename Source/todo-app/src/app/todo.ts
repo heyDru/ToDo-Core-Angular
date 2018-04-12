@@ -3,7 +3,7 @@ export class Todo {
     title:string;
     description:string;
     complete:boolean=false;
-    expirationTime:Date
+    expirationTime:Date;
 
     constructor(values:Object={}) {
         Object.assign(this,values);
