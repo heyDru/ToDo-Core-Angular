@@ -11,9 +11,10 @@ using ToDoAPI.DomainModels;
 namespace ToDoAPI.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    partial class TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20180412052312_EditTodo")]
+    partial class EditTodo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

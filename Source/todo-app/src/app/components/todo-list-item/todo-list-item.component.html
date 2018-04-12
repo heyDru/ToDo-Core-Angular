@@ -1,7 +1,59 @@
-<div class="view">
-  <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete" />
-  <label>{{todo.title}}</label>
-  <label >{{todo.expirationTime}}</label>
-  <button class="edit" (click)="editTodo(todo)">edit</button>
-  <button class="destroy" (click)="removeTodo(todo)">delete</button>
+<div class="card">
+    <div class="right-align updel">
+        <a href="#" class="">
+          <i (click)="editTodo(todo)" class="fa fa-edit" style="font-size:30px;color:blue;"></i>
+        </a>
+        <a href="#" class="">
+          <i (click)="removeTodo(todo)" class="fa fa-times-circle" style="font-size:30px;color:red;"></i>
+        </a>
+      </div>
+  <div class="card-content">
+    <div class="row">
+
+      <input type="checkbox" id="'checkbox_'+{{todo.id}}" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+      <label for="'checkbox_'+{{todo.id}}">
+        <strong>{{todo.title}}</strong>
+      </label>
+
+    </div>
+    
+    <div class="row col s6">
+    <div class="col s6"> 
+      <p class="descriprion">Description</p>
+      <p class="descriprion">{{todo.description}}</p>
+    </div>
+    <div class="col s6">
+      <p class="descriprion">Expiration Time : </p> {{todo.expirationTime | date:'HH-mm, dd MMM, yyyy'}}
+    </div>
+  </div>
+
+    <!-- <div class="row">
+      <a href="#" class="">
+        <i (click)="editTodo(todo)" class="fa fa-edit" style="font-size:30px;color:blue;"></i>
+      </a>
+      <a href="#" class="">
+        <i (click)="removeTodo(todo)" class="fa fa-times-circle" style="font-size:30px;color:red;"></i>
+      </a>
+    </div> -->
+    <div *ngIf="editState && todoToEditId == todo.id">
+      <form (ngSubmit)="updateTodo()" class="col s6">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" placeholder="What needs to be done?" autofocus="" name="title" [(ngModel)]="todo.title" />
+          </div>
+          <div class="input-field col s6">
+            <input type="text" placeholder="Description" autofocus="" name="description" [(ngModel)]="todo.description" />
+          </div>
+          <div>
+            <label>
+              Expiration Time
+              <input [min]="minDateTime" [owlDateTime]="dt1" name="expirationTime" [owlDateTimeTrigger]="dt1" placeholder="Expiration Time" [(ngModel)]="todo.expirationTime">
+              <owl-date-time #dt1></owl-date-time>
+            </label>
+          </div>
+          <input type="submit" value="Update" class="btn btn-flat green">
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

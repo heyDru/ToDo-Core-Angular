@@ -9,7 +9,7 @@ using ToDoAPI.DomainModels;
 namespace ToDoAPI.Controllers
 {
     [Produces("application/json")]
-    [Route("api/todos")]
+    [Route("api/[controller]")]
     public class TodosController : Controller
     {
         private readonly ITodosControllerProvider _todoProvider;
@@ -19,33 +19,36 @@ namespace ToDoAPI.Controllers
             _todoProvider = todoProvider;
         }
 
-        [HttpGet]
-        [Route("api/todos/test")]
-        public string Test()
-        {
-            return "Ok";
-        }
+        //[HttpGet]
+        //public string Test()
+        //{
+        //    return "Ok";
+        //}
 
+        [HttpGet]
         public IQueryable<Todo> Get()
         {
             return _todoProvider.GetAllTodos();
         }
 
-        public async Task<Todo> Get(int id)
+        [HttpGet("{id}")]        public async Task<Todo> Get(int id)
         {
             return await _todoProvider.GetTodoById(id);
         }
 
+        [HttpPost]
         public async Task Creates([FromBody]Todo todo)
         {
              await _todoProvider.AddTodo(todo);
         }
 
+        [HttpPut]
         public async Task Update([FromBody]Todo todo)
         {
             await _todoProvider.UpdateTodo(todo);
         }
 
+        [HttpDelete]
         public async Task Delete(int id)
         {
             await _todoProvider.DeleteTodo(id);

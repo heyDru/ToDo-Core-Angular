@@ -10,6 +10,12 @@ export class TodoListItemComponent {
   @Input()
   todo: Todo;
 
+  @Input()
+  editState: boolean;
+
+  @Input()
+  todoToEditId:number;
+
   @Output()
   remove: EventEmitter<Todo> = new EventEmitter();
 
@@ -18,6 +24,9 @@ export class TodoListItemComponent {
 
   @Output()
   edit: EventEmitter<Todo> = new EventEmitter();
+
+  @Output()
+  update: EventEmitter<Todo> = new EventEmitter();
 
   constructor() { }
 
@@ -30,7 +39,11 @@ export class TodoListItemComponent {
   }
 
   editTodo(todo){
-    
+    this.edit.emit(todo);
+  }
+
+  updateTodo(){
+    this.update.emit(this.todo)
   }
 
 }

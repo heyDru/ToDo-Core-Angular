@@ -1,25 +1,11 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Read SitePoint article",
-      "complete": false
-    },
-    {
       "complete": false,
-      "title": "fdgfg",
-      "id": 2
-    },
-    {
-      "complete": false,
-      "title": "sdfdsfdsf",
-      "id": 3
-    },
-    {
-      "complete": false,
-      "title": "рпопро",
-      "expirationTime": "2019-04-02",
-      "id": 4
+      "title": "Make something awesome",
+      "description": "make it wherever ",
+      "expirationTime": "2018-04-13T14:00:23.000Z",
+      "id": 1
     }
   ]
 }

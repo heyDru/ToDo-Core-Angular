@@ -31,8 +31,9 @@ namespace ToDoAPI
         {
             services.AddDbContext<TodoContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString("TodosConnection")));
-            services.AddSingleton<ITodosRepository, TodosRepository>();
+            services.AddScoped<ITodosRepository, TodosRepository>();
             services.AddTransient<ITodosControllerProvider, TodosControllerProvider>();
+            
             services.AddMvc();
         }
 
