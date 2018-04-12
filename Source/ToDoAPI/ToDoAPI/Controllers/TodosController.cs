@@ -19,17 +19,17 @@ namespace ToDoAPI.Controllers
             _todoProvider = todoProvider;
         }
 
-        [HttpGet]
-        public string Test()
-        {
-            return "Ok";
-        }
-
         //[HttpGet]
-        //public IQueryable<Todo> Get()
+        //public string Test()
         //{
-        //    return _todoProvider.GetAllTodos();
+        //    return "Ok";
         //}
+
+        [HttpGet]
+        public IQueryable<Todo> Get()
+        {
+            return _todoProvider.GetAllTodos();
+        }
 
         [HttpGet("{id}")]        public async Task<Todo> Get(int id)
         {
