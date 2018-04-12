@@ -10,7 +10,7 @@ namespace ToDoAPI.DAL.Interfaces
 
         Task<Todo> GetById(int id);
 
-        Task Add(Todo entity);
+        Task<int> Add(Todo entity);
 
         Task Update(Todo entity);
 

@@ -27,15 +27,15 @@ namespace ToDoAPI.DAL
             return await _db.Todos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task Add(Todo entity)
+        public async Task<int> Add(Todo entity)
         {
             await _db.Todos.AddAsync(entity);
-            await _db.SaveChangesAsync();
+           return await _db.SaveChangesAsync();
         }
 
         public async Task Update(Todo todo)
         {
-            _db.Todos.Update(todo);
+          var updated =  _db.Todos.Update(todo);
             await _db.SaveChangesAsync();
         }
 

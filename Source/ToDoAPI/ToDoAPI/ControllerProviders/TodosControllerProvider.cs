@@ -43,16 +43,24 @@ namespace ToDoAPI.ControllerProviders
             }
         }
 
-        public async Task AddTodo(Todo newTodo)
+        public async Task<Todo> AddTodo(Todo newTodo)
         {
-            try
+            if (newTodo != null)
             {
-                await _todoRepository.Add(newTodo);
+                try
+                {
+                    if (await _todoRepository.Add(newTodo) > 0)
+                    {
+                        return newTodo;
+                    };
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    return null;
+                }
             }
-            catch (Exception e)
-            {
-
-            }
+            return null;
         }
 
         public async Task DeleteTodo(int id)

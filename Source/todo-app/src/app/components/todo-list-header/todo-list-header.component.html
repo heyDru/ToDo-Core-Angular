@@ -13,14 +13,10 @@
           <label>Description</label>
         </div>
         <div class="input-field col s12">
-
           <input [min]="minDateTime" [owlDateTime]="dt1" name="expirationTime" [owlDateTimeTrigger]="dt1" placeholder="Expiration Time"
             [(ngModel)]="newTodo.expirationTime">
           <owl-date-time #dt1></owl-date-time>
-          <label>
-            Expiration Time </label>
         </div>
-
         <input type="submit" value="Add" class="btn btn-flat">
       </div>
     </form>

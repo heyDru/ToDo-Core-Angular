@@ -51,7 +51,6 @@ export class TodoApiService {
   }
 
   getTodoById(id:number):Observable<Todo>{
-    
     return this.http
     .get(API_URL+'/todos/'+id)
     .map(response=>{
@@ -64,7 +63,4 @@ export class TodoApiService {
     console.error('ApiService::handleError', error);
     return Observable.throw(error);
   }
-
-
-
 }

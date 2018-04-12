@@ -8,7 +8,7 @@ namespace ToDoAPI.ControllerProviders.Interfaces
     {
         IQueryable<Todo> GetAllTodos();
         Task<Todo> GetTodoById(int id);
-        Task AddTodo(Todo newTodo);
+        Task<Todo> AddTodo(Todo newTodo);
         Task DeleteTodo(int id);
         Task UpdateTodo(Todo todo);
     }

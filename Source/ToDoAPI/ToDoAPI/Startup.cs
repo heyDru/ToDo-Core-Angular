@@ -33,7 +33,7 @@ namespace ToDoAPI
                 option.UseSqlServer(Configuration.GetConnectionString("TodosConnection")));
             services.AddScoped<ITodosRepository, TodosRepository>();
             services.AddTransient<ITodosControllerProvider, TodosControllerProvider>();
-            
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -44,7 +44,10 @@ namespace ToDoAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors((builder) => builder.AllowAnyOrigin());
+            app.UseCors((builder) => builder.WithOrigins("http://localhost:4200")
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
             app.UseMvc();
         }
     }

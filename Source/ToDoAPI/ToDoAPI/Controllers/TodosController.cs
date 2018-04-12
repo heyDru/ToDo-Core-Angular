@@ -39,16 +39,18 @@ namespace ToDoAPI.Controllers
         [HttpPost]
         public async Task Creates([FromBody]Todo todo)
         {
-             await _todoProvider.AddTodo(todo);
+         
+                await _todoProvider.AddTodo(todo);
         }
 
-        [HttpPut]
-        public async Task Update([FromBody]Todo todo)
+        [HttpPut("{id}")]
+        public async Task<Todo> Put([FromBody]Todo todo)
         {
             await _todoProvider.UpdateTodo(todo);
+            return todo;
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
             await _todoProvider.DeleteTodo(id);
